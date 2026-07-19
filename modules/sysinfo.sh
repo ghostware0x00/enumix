@@ -13,7 +13,7 @@ source ./utils/colors.sh # path is starting from the enumix.sh since its the sta
 # - CPU Information
 # - Memory Information
 
-echo -e "${B_BLUE}<------------------ System Information ------------------>${RESET}"
+echo -e "${B_BLUE}<------------------ System Info ------------------>${RESET}"
 
 # finding system info
 distribution=$(cat /etc/os-release | grep -i "^NAME" | cut -d'=' -f2-) # finds the os release info by extracting the line starting with "NAME" and then extracts everything after "=" . so "=" is the delimiter
@@ -30,18 +30,23 @@ mem_info=$(cat /proc/meminfo | grep -i "^memtotal" | awk '{printf "%-20s %6.2f G
 
 
 # displaying values
-echo -e "${B_CYAN}\tDistribution : ${RESET}$distribution"
-echo -e "${B_CYAN}\tKernel Version : ${RESET}$kernel_version"
-echo -e "${B_CYAN}\tArchitecture : ${RESET}$arch"
-echo -e "${B_CYAN}\tHostname : ${RESET}$hostname"
-echo -e "${B_CYAN}\tUptime : ${RESET}$uptime"
-echo -e "${B_CYAN}\tSHELL : ${RESET}$current_shell"
-echo -e "${B_CYAN}\tINIT PROGRAM : ${RESET}$init_prog"
-echo -e "${B_CYAN}\tVirtualization : ${RESET}$vm_detect"
-echo -e "${B_CYAN}\tContainerization : ${RESET}$container_detect"
-echo -e "${B_CYAN}\tCpu : ${RESET}$cpu_info"
-echo -e "${B_CYAN}\tMemory : ${RESET}$mem_info"
+# first %b = for interpreting the color code
+# second %b = for interpreteing the color reset code
+# %-20s left aligned 20 character string space reserved
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Distribution" "$RESET" "$distribution"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Kernel" "$RESET" "$kernel_version"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Architecture" "$RESET" "$arch"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Hostname" "$RESET" "$hostname"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Uptime" "$RESET" "$uptime"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Current Shell" "$RESET" "$current_shell"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "INIT PROG" "$RESET" "$init_prog"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Virtualization" "$RESET" "$vm_detect"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Containerization" "$RESET" "$container_detect"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Cpu" "$RESET" "$cpu_info"
+printf "%b\t%-20s%b : %s\n" "$B_CYAN" "Memory" "$RESET" "$mem_info"
 
+
+printf "\n"
 
 
 
