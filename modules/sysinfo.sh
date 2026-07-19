@@ -26,7 +26,7 @@ init_prog=$(cat /proc/1/comm) # init is the first program run by the os when its
 vm_detect=$(systemd-detect-virt) # find out whether os is running in virtualized platform or not
 container_detect=$(cat /proc/1/cgroup) # find out whether os is running in a containerized platform
 cpu_info=$(lscpu | grep -i "model name" | cut -d':' -f2- | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//') # finds cpu info and truncates leading and ending spaces
-mem_info=$(cat /proc/meminfo | grep -i "^memtotal" | awk '{printf "%-20s %6.2f GB\n", $1, $2/1024/1024}' | cut -d':' -f2- | sed -e 's/^[[:space:]]*//' )
+mem_info=$(cat /proc/meminfo | grep -i "^memtotal" | awk '{printf "%-20s %6.2f GB\n", $1, $2/1024/1024}' | cut -d':' -f2- | sed -e 's/^[[:space:]]*//' ) # find memory and use awk command to display info in bytes and then cut to display the memory part only and sed to truncate leading spaces
 
 
 # displaying values
