@@ -29,7 +29,7 @@ printf "%b\t%-20s%b : \n" "$B_CYAN" "Groups" "$RESET"
 for group in $groupInfo; do
 	printf "\t%-22s%s\n" "" "$group"
 done
-printf "%b\t%-20s%b : \n" "$B_CYAN" "Users" "$RESET"
+printf "%b\t%-20s%b : \n" "$B_CYAN" "All Users" "$RESET"
 for hu in $users; do
 	printf "\t%-22s%s\n" "" "$hu"
 done
