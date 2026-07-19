@@ -33,3 +33,5 @@ printf "%b\t%-20s%b : \n" "$B_CYAN" "Users" "$RESET"
 for hu in $users; do
 	printf "\t%-22s%s\n" "" "$hu"
 done
+
+printf "\n"
